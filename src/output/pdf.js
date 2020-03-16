@@ -9,6 +9,9 @@ class pdf extends markdown {
         if (fs.existsSync(file)) fs.unlinkSync(file);
 
         markdownpdf({
+            paperFormat: 'A4',
+            paperOrientation: 'landscape',
+            paperBorder: '1cm',
             cssPath: `${__dirname}/styles/layout/${style}.css`,
             highlightCssPath: `${__dirname}/styles/highlight/${style}.css`
         }).from.string(this.out).to(file, () => resolve());
